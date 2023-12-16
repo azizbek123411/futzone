@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futzone/src/ui/pages/home_page.dart';
+import 'package:futzone/src/ui/pages/navbar_/main_navbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  HomePage(),
+      home:  NavMain(),
     );
   }
 }
