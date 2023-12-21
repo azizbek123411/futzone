@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futzone/src/ui/screens/league_and_matches.dart';
+import 'package:futzone/src/ui/screens/search_screen.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home';
@@ -11,63 +12,100 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void showData() {
+    showDatePicker(
+      context: context,
+      firstDate: DateTime(2010),
+      lastDate: DateTime(2030),
+      initialDate: DateTime.now(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black54,
-      appBar: AppBar(
-        centerTitle: false,
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
         backgroundColor: Colors.black54,
-        leading: const Image(
-          image: AssetImage('assets/images/lslogo.png'),
-          width: 15,
-        ),
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(
-              image: AssetImage('assets/images/footballremove.png'),
-              height: 15,
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Text(
-              'Football',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.white,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            SizedBox(
-              width: 30,
-            )
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.menu,
-              size: 24,
-              color: Colors.grey,
+        appBar: AppBar(
+          backgroundColor: Colors.black54,
+          title: const Text(
+            'FutZone',
+            style: TextStyle(
+              fontSize: 19,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
             ),
           ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: ListView(
-          children: const [
-            Matches(),
-            Matches(),
-            Matches(),
-            Matches(),
-            Matches(),
-            Matches(),
-            Matches(),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.search,
+                size: 24,
+                color: Colors.grey,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                showData();
+              },
+              icon: const Icon(
+                Icons.calendar_today_outlined,
+                size: 20,
+                color: Colors.grey,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.menu,
+                size: 24,
+                color: Colors.grey,
+              ),
+            ),
           ],
+          bottom: const TabBar(
+            dividerColor: Colors.transparent,
+            indicatorColor: Colors.transparent,
+            labelColor: Colors.deepOrange,
+            unselectedLabelColor: Colors.white24,
+            tabs: [
+              Tab(
+                text: "All",
+              ),
+              Tab(
+                text: 'LIVE',
+              ),
+              Tab(
+                text: 'Upcoming',
+              ),
+              Tab(
+                text: 'Finished',
+              ),
+            ],
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+          child: ListView(
+            children: const [
+              Matches(),
+              Matches(),
+              Matches(),
+              Matches(),
+              Matches(),
+              Matches(),
+              Matches(),
+            ],
+          ),
         ),
       ),
     );

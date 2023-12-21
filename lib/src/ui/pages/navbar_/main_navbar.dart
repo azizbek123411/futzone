@@ -47,7 +47,6 @@ class _NavMainState extends State<NavMain> {
           topLeft: Radius.circular(10),
         ),
         child: BottomNavigationBar(
-          backgroundColor: Colors.black54,
           unselectedLabelStyle: const TextStyle(color: Colors.white24),
           currentIndex: selectedIndex,
           onTap: (int itemIndex) {
