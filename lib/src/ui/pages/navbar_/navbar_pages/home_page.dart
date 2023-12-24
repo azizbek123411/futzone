@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:futzone/src/ui/screens/league_and_matches.dart';
-import 'package:futzone/src/ui/screens/search_screen.dart';
+import 'package:futzone/src/ui/screens/home_screens/league_and_matches.dart';
+import 'package:futzone/src/ui/screens/home_screens/search_screen.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home';
